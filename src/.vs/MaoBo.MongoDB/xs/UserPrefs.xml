@@ -1,0 +1,27 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workbench ActiveDocument="MongoDB/DbCollection.cs">
+    <Files>
+      <File FileName="MongoDB/Attributes/CollectionNameAttribute.cs" Line="8" Column="53" />
+      <File FileName="MongoDB/DbCollection.cs" Line="43" Column="27" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="MaoBo.MongoDB" expanded="True">
+            <Node name="MongoDB" expanded="True">
+              <Node name="Dependencies" expanded="True" />
+              <Node name="Attributes" expanded="True" />
+              <Node name="DbCollection.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
