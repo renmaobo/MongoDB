@@ -14,14 +14,27 @@ namespace MongoDB
     /// </summary>
     public class DbCollection<TDocument> : IMongoCollection<TDocument>
     {
+        /// <summary>
+        /// constructor
+        /// </summary>
         public DbCollection() { }
 
+        /// <summary>
+        /// constructor
+        /// </summary>
+        /// <param name="mongoClientSettings">mongo client setting</param>
         public DbCollection(MongoClientSettings mongoClientSettings)
         {
             this.MongoClientSettings = mongoClientSettings;
             this.MongoClient = new MongoClient(mongoClientSettings);
         }
 
+        /// <summary>
+        /// constructor
+        /// </summary>
+        /// <param name="mongoClientSettings">mongo client setting</param>
+        /// <param name="dbName">database name</param>
+        /// <param name="collectionName">document collection name</param>
         public DbCollection(MongoClientSettings mongoClientSettings, string dbName, string collectionName) : this(mongoClientSettings)
         {
             this.DataBaseName = dbName;
@@ -92,7 +105,7 @@ namespace MongoDB
         public MongoCollectionSettings Settings => throw new NotImplementedException();
 
         /// <summary>
-        /// aggregate
+        /// aggregate function
         /// </summary>
         /// <typeparam name="TResult"></typeparam>
         /// <param name="pipeline"></param>
@@ -102,14 +115,41 @@ namespace MongoDB
         public IAsyncCursor<TResult> Aggregate<TResult>(PipelineDefinition<TDocument, TResult> pipeline, AggregateOptions options = null, CancellationToken cancellationToken = default)
             => this.MongoCollection.Aggregate(pipeline, options, cancellationToken);
 
+        /// <summary>
+        /// aggregate function
+        /// </summary>
+        /// <typeparam name="TResult"></typeparam>
+        /// <param name="session"></param>
+        /// <param name="pipeline"></param>
+        /// <param name="options"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         public IAsyncCursor<TResult> Aggregate<TResult>(IClientSessionHandle session, PipelineDefinition<TDocument, TResult> pipeline, AggregateOptions options = null, CancellationToken cancellationToken = default)
             => this.MongoCollection.Aggregate(session, pipeline, options, cancellationToken);
 
+        /// <summary>
+        /// aggregate function
+        /// </summary>
+        /// <typeparam name="TResult"></typeparam>
+        /// <param name="pipeline"></param>
+        /// <param name="options"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         public Task<IAsyncCursor<TResult>> AggregateAsync<TResult>(PipelineDefinition<TDocument, TResult> pipeline, AggregateOptions options = null, CancellationToken cancellationToken = default)
             => this.MongoCollection.AggregateAsync(pipeline, options, cancellationToken);
 
+        /// <summary>
+        /// aggregate function
+        /// </summary>
+        /// <typeparam name="TResult"></typeparam>
+        /// <param name="session"></param>
+        /// <param name="pipeline"></param>
+        /// <param name="options"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         public Task<IAsyncCursor<TResult>> AggregateAsync<TResult>(IClientSessionHandle session, PipelineDefinition<TDocument, TResult> pipeline, AggregateOptions options = null, CancellationToken cancellationToken = default)
             => this.MongoCollection.AggregateAsync(session, pipeline, options, cancellationToken);
+
 
         public BulkWriteResult<TDocument> BulkWrite(IEnumerable<WriteModel<TDocument>> requests, BulkWriteOptions options = null, CancellationToken cancellationToken = default)
             => this.MongoCollection.BulkWrite(requests, options, cancellationToken);
